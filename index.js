@@ -62,3 +62,4 @@ app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 //!(1) Başlangıçta projeyi ayağa kaldırmak için 2 tane terminal açarız birine nodemon, diğerine npm run ui yazıp çalıştırılır. 
 //!(2) Public içine component klasörü oluşturduk!
 //!(3) ctrl+shift+p configure snippets oluşturuldu!
+//!(4) import=include
