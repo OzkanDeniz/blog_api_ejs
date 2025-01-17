@@ -1,0 +1,17 @@
+<div class="nav-scroller py-1 mb-3 border-bottom">
+    <nav class="nav nav-underline justify-content-between">
+
+        {% if(categories?.length > 0 ){ %}
+
+        {% categories.forEach(category=>{ %}
+        <a class="nav-item nav-link link-body-emphasis" href="#">
+            {%= category.name %}
+        </a>
+        {% }) %}
+
+        {% } else { %}
+        <p>No Any Category Found.</p>
+        {% } %}
+
+    </nav>
+</div>

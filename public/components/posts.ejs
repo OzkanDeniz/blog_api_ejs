@@ -1,0 +1,22 @@
+{% posts.forEach(post => { %}
+<article class="blog-post">
+    <h2 class="display-5 mb-1">
+        <a href="/blog/post/ {%= post._id %} " class="link-body-emphasis text-decoration-none">
+            {%= post.title %}
+        </a>
+    </h2>
+    <p class="blog-post-meta">
+        {%= post.createdAt.toUTCString() %}
+    </p>
+
+    <img src="{%= post.imageUrl %}" alt="{%= post.title %}" style="width: 180px; float:left; margin: 0px 15px 15px 0px">
+    
+    {%= post.content.substring(0, 500) %}
+    <span class="text-primary">...read more</span>
+    
+    <div class="admin-area text-end">
+        <a class="btn btn-sm btn-primary" href="/post/:id/update">Update</a>
+        <a class="btn btn-sm btn-danger" href="/post/:id/delete" onclick="return confirm('Are you sure?')">Delete</a>
+    </div>
+</article>
+{% }) %}

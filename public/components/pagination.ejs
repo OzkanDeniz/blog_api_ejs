@@ -1,0 +1,24 @@
+<nav class="blog-pagination" aria-label="Pagination">
+
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
+        href="?page=1">&laquo;</a>
+
+    {% if(details.pages.current > 3) { %}
+    <span>...</span>
+    {% } %}
+
+    {% for (index in details.pages.list ){ %}
+    <a class="btn rounded-pill {%=details.pages.list[index] == details.pages.current ? 'btn-primary' : 'btn-outline-primary' %}" href="?page={%= details.pages.list[index] %}">
+        {%= details.pages.list[index] %}
+    </a>
+    {% } %}
+
+    {% if(details.pages.current < details.pages.total - 3) { %}
+    <span>...</span>
+    {% } %}
+
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '' : 'disabled' %}"
+    href="?page={%= details.pages.total %}">&raquo;</a>
+    
+</nav>
+<p class="text-end p-2 border-top">Total {%= details.totalRecords %} Posts</p>
