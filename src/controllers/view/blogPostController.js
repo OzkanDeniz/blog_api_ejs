@@ -20,7 +20,7 @@ module.exports = {
 
     const details = await res.getModelListDetails(BlogPost, { isPublished: true })
 
-    res.render('index', { categories, posts, recentPosts, details })
+    res.render('index', { categories, posts, recentPosts, details }) //!(1)
   },
 
   create: async (req, res) => {

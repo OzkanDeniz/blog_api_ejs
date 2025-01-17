@@ -59,4 +59,5 @@ app.use(require("./src/middlewares/errorHandler"));
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
 // require("./src/helpers/sync2")();
-//! Başlangıçta projeyi ayağa kaldırmak için 2 tane terminal açarız birine nodemon, diğerine npm run ui yazıp çalıştırılır. 
+//!(1) Başlangıçta projeyi ayağa kaldırmak için 2 tane terminal açarız birine nodemon, diğerine npm run ui yazıp çalıştırılır. 
+//!(2) Public içine component klasörü oluşturduk!
