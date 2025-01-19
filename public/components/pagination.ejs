@@ -2,6 +2,8 @@
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
         href="?page=1">&laquo;</a>
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
+        href="?page={%= details.pages.previos %}">Prev</a>
 
     {% if(details.pages.current > 3) { %}
     <span>...</span>
