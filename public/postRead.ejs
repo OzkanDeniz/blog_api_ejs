@@ -11,7 +11,7 @@
                 Published: {%= post.isPublished%}
             </div>
             <article class="blog-post">
-                <a href="/post?filter[blogCategoryId]=:id"># {%= post.blogCategoryId.name %}</a>
+                <a href="/blog/post?filter[blogCategoryId]={%= post.blogCategoryId._id %}"># {%= post.blogCategoryId.name %}</a>
                 <h2 class="display-5 mb-1">
                     <a href="/post/:id" class="link-body-emphasis text-decoration-none">{%= post.title %}</a>
                 </h2>
