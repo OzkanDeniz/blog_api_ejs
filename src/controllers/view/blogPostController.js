@@ -57,7 +57,7 @@ module.exports = {
 
       const categories = await blogCategoryModel.find();
 
-      res.render("postForm", { cagetories });
+      res.render("postForm", { categories });
     }
   },
 
