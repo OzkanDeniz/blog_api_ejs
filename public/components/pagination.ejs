@@ -21,6 +21,8 @@
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '' : 'disabled' %}"
     href="?page={%= details.pages.total %}">&raquo;</a>
+    <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
+        href="?page={%= details.pages.next %}">Next</a>
     
 </nav>
 <p class="text-end p-2 border-top">Total {%= details.totalRecords %} Posts</p>
