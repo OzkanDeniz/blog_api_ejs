@@ -4,56 +4,67 @@
 ------------------------------------------------------- */
 
 const BlogPost = require("../../models/blogPostModel");
-const BlogCategory = require('../../models/blogCategoryModel')
+const BlogCategory = require("../../models/blogCategoryModel");
 const removeQueryParam = require("../../helpers/removeQueryParam");
+const blogCategoryModel = require("../../models/blogCategoryModel");
 // ------------------------------------------
 // BlogPost
 // ------------------------------------------
 
 module.exports = {
   list: async (req, res) => {
+    const posts = await res.getModelList(
+      BlogPost,
+      { isPublished: true },
+      "blogCategoryId"
+    ); // 10
 
-    const posts = await res.getModelList(BlogPost, { isPublished: true }, "blogCategoryId"); // 10
+    const categories = await BlogCategory.find({});
 
-    const categories = await BlogCategory.find({})
+    const recentPosts = await BlogPost.find()
+      .sort({ createdAt: "desc" })
+      .limit(3);
 
-    const recentPosts = await BlogPost.find().sort({ createdAt: 'desc' }).limit(3)
+    const details = await res.getModelListDetails(BlogPost, {
+      isPublished: true,
+    });
 
-    const details = await res.getModelListDetails(BlogPost, { isPublished: true })
-
-  
     //req.originalUrl
 
-    let pageUrl = '';
-    const queryString = req.originalUrl.split("?")[1]
+    let pageUrl = "";
+    const queryString = req.originalUrl.split("?")[1];
 
-    if(queryString){
-      pageUrl = removeQueryParam(queryString, "page")
+    if (queryString) {
+      pageUrl = removeQueryParam(queryString, "page");
     }
 
-    pageUrl = pageUrl ? "&" + pageUrl : ""
+    pageUrl = pageUrl ? "&" + pageUrl : "";
 
-    res.render('index', { categories, posts, recentPosts, details, pageUrl }) //!(1)
-
+    res.render("index", { categories, posts, recentPosts, details, pageUrl }); //!(1)
   },
 
   create: async (req, res) => {
-    const data = await BlogPost.create(req.body);
 
-    res.status(201).send({
-      error: false,
-      body: req.body,
-      result: data,
-    });
+    if (req.method == "POST") {
+
+      req.body.userId = req.session?.user.id
+
+      const data = await BlogPost.create(req.body);
+
+    } else {
+
+      const categories = await blogCategoryModel.find();
+
+      res.render("postForm", { cagetories });
+    }
   },
 
   read: async (req, res) => {
-   
     const post = await BlogPost.findOne({ _id: req.params.postId }).populate(
-      "blogCategoryId",
-    ); 
+      "blogCategoryId"
+    );
 
-    res.render("postRead", {post})
+    res.render("postRead", { post });
   },
 
   update: async (req, res) => {
@@ -61,7 +72,7 @@ module.exports = {
     const data = await BlogPost.updateOne(
       { _id: req.params.postId },
       req.body,
-      { runValidators: true },
+      { runValidators: true }
     );
 
     res.status(202).send({
