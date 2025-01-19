@@ -54,10 +54,7 @@ module.exports = {
       "blogCategoryId",
     ); // get Primary Data
 
-    res.status(200).send({
-      error: false,
-      result: data,
-    });
+    res.render("postRead")
   },
 
   update: async (req, res) => {
