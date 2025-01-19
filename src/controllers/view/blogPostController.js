@@ -24,8 +24,13 @@ module.exports = {
     //req.originalUrl
 
     let pageUrl = '';
-    
-    console.log(req.originalUrl);
+    const queryString = req.originalUrl.split("?")[1]
+
+    if(queryString){
+      pageUrl = removeQueryParam(queryString, "page")
+    }
+
+    pageUrl = pageUrl ? "&" + pageUrl : ""
 
     res.render('index', { categories, posts, recentPosts, details }) //!(1)
 
