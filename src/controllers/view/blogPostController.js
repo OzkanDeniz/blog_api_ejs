@@ -20,7 +20,15 @@ module.exports = {
 
     const details = await res.getModelListDetails(BlogPost, { isPublished: true })
 
+  
+    //req.originalUrl
+
+    let pageUrl = '';
+    
+    console.log(req.originalUrl);
+
     res.render('index', { categories, posts, recentPosts, details }) //!(1)
+
   },
 
   create: async (req, res) => {
