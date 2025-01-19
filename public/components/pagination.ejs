@@ -4,14 +4,14 @@
         href="?page=1{%= pageUrl %}">&laquo;</a>
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
-        href="?page={%= details.pages.previous %}">Prev</a>
+        href="?page={%= details.pages.previous + pageUrl %}">Prev</a>
 
     {% if(details.pages.current > 3) { %}
     <span>...</span>
     {% } %}
 
     {% for (index in details.pages.list ){ %}
-    <a class="btn rounded-pill {%=details.pages.list[index] == details.pages.current ? 'btn-primary' : 'btn-outline-primary' %}" href="?page={%= details.pages.list[index] %}">
+    <a class="btn rounded-pill {%=details.pages.list[index] == details.pages.current ? 'btn-primary' : 'btn-outline-primary' %}" href="?page={%= details.pages.list[index] + pageUrl %}">
         {%= details.pages.list[index] %}
     </a>
     {% } %}
@@ -21,10 +21,10 @@
     {% } %}
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '' : 'disabled' %}"
-    href="?page={%= details.pages.next %}">Next</a>
+    href="?page={%= details.pages.next + pageUrl %}">Next</a>
     
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '' : 'disabled' %}"
-    href="?page={%= details.pages.total %}">&raquo;</a>
+    href="?page={%= details.pages.total + pageUrl %}">&raquo;</a>
     
     
 </nav>
