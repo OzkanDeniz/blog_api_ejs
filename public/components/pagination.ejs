@@ -1,7 +1,7 @@
 <nav class="blog-pagination" aria-label="Pagination">
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
-        href="?page=1">&laquo;</a>
+        href="?page=1{%= pageUrl %}">&laquo;</a>
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
         href="?page={%= details.pages.previous %}">Prev</a>

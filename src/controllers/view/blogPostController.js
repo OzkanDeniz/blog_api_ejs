@@ -32,7 +32,7 @@ module.exports = {
 
     pageUrl = pageUrl ? "&" + pageUrl : ""
 
-    res.render('index', { categories, posts, recentPosts, details }) //!(1)
+    res.render('index', { categories, posts, recentPosts, details, pageUrl }) //!(1)
 
   },
 
