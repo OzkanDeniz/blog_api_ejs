@@ -8,10 +8,10 @@
             <div class="admin-area text-end">
                 <a class="btn btn-sm btn-primary" href="/post/:id/update">Update</a>
                 <a class="btn btn-sm btn-danger" href="/post/:id/delete" onclick="return confirm('Are you sure?')">Delete</a>
-                Published: true
+                Published: {%= post.isPublished%}
             </div>
             <article class="blog-post">
-                <a href="/post?filter[blogCategoryId]=:id"># CategoryName</a>
+                <a href="/post?filter[blogCategoryId]=:id"># {%= post.blogCategoryId.name %}</a>
                 <h2 class="display-5 mb-1">
                     <a href="/post/:id" class="link-body-emphasis text-decoration-none">Sample Blog Post</a>
                 </h2>
