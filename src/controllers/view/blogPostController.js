@@ -51,6 +51,8 @@ module.exports = {
 
       const data = await BlogPost.create(req.body);
 
+      if(data) res.redirect("/blog/post")
+
     } else {
 
       const categories = await blogCategoryModel.find();
